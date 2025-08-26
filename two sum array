@@ -1,0 +1,34 @@
+#include <iostream>
+#include <vector>
+#include <unordered_map> // for hash map
+using namespace std;
+
+vector<int> twoSum(vector<int>& nums, int target) {
+    unordered_map<int, int> mp; // value -> index
+
+    for (int i = 0; i < nums.size(); i++) {
+        int complement = target - nums[i]; // what number do we need?
+
+        // check if complement is already in the map
+        if (mp.find(complement) != mp.end()) {
+            return {mp[complement], i}; // return indices  
+// mp[complement] → index of the earlier number.
+// i → index of the current number.
+        }
+
+        // store current number with its index
+        mp[nums[i]] = i;
+    }
+
+    return {}; // won't reach here (guaranteed solution)
+}
+
+int main() {
+    vector<int> nums = {2, 7, 11, 15};
+    int target = 9;
+
+    vector<int> result = twoSum(nums, target);
+
+    cout << "[" << result[0] << ", " << result[1] << "]" << endl;
+    return 0;
+}
