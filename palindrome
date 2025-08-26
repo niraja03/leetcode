@@ -1,0 +1,14 @@
+class Solution {
+public:
+    bool isPalindrome(int x) {
+        // Negative numbers or numbers ending with 0 (but not 0 itself) cannot be palindrome
+        if (x < 0 || (x % 10 == 0 && x != 0)) return false;
+
+        int sposition = 0;   // previously reversedHalf
+        while (x > sposition) {
+            sposition = sposition * 10 + x % 10;
+            x /= 10;
+        }
+        return (x == sposition || x == sposition / 10);
+    }
+};
