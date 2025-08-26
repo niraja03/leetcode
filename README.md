@@ -1,0 +1,2 @@
+# leetcode
+initially array problems
